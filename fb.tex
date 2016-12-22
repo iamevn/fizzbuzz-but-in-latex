@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{tikz,calc,ifthen}
+
+\newcommand{\fizzbuzz}[1]{
+    \newcounter{fizz}
+    \setcounter{fizz}{0}
+    \newcounter{buzz}
+    \setcounter{buzz}{0}
+
+    \foreach \x in {0,...,#1}{
+        \ifthenelse{ \equal{\thefizz}{3} }{
+            \ifthenelse{ \equal{\thebuzz}{5} }{
+                fizzbuzz
+                \setcounter{fizz}{0}
+                \setcounter{buzz}{0}
+            }{
+                fizz
+                \setcounter{fizz}{0}
+            }
+        }{
+            \ifthenelse{ \equal{\thebuzz}{5} }{
+                buzz
+                \setcounter{buzz}{0}
+            }{
+                \x
+            }
+        }
+        \setcounter{fizz}{\thefizz+1}
+        \setcounter{buzz}{\thebuzz+1}
+        \\
+    }
+}
+
+\usepackage{fullpage}
+\setlength\parindent{0pt}
+
+\begin{document}
+\twocolumn
+\begin{centering}
+\fizzbuzz{100}
+\end{centering}
+\end{document}
+
